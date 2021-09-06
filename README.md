@@ -1,5 +1,5 @@
 # pubsub-emulator-demo
-A Micronaut 3 implementation of nhartner's Spring Boot pubsub-emulator-demo: https://github.com/nhartner/pubsub-emulator-demo
+A Micronaut 3.0.0 implementation of nhartner's Spring Boot pubsub-emulator-demo: https://github.com/nhartner/pubsub-emulator-demo
 
 This repo is also serving the purpose of getting team members in a current project up-and-running on Micronaut 3, hence the step-by-step approach below.
 
@@ -60,13 +60,14 @@ pub-sub:
   topic-name: topic-test
   subscription-names:
     - subscription-one
+    - subscription-two
 ```
 #### Config Property Classes
 `GcpConfigProperties` and `PubSubConfigProperties` inside package `com.example.configuration` are for accessing properties inside `application.yml`.
 Classes are annotated with Lombok `@Data` in order to avoid getters/setters.
 
 #### Implementation
-Package `com.example.pubsub` is basically _nharntner's_ code refactored/rewritten for Micronaut.
+Except for addition of a more complex subscriber, content in package `com.example.pubsub` is basically a rewrite/refactoring of _nhartner's_ code.
 
 #### Running PubSubIntegrationTests
 Run 
