@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: pubsubEmulatorDemo
+
+gcp:
+  project-id: test-project
+
+pub-sub:
+  emulator-host: ${PUBSUB_EMULATOR_HOST}
+  topic-name: topic-test
+  subscription-names:
+    - subscription-one
+    - subscription-two
+

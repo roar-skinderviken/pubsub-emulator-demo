@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.example
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, assertj, gcp-pubsub, google-cloud-function, google-cloud-function-http, http-client, java, java-application, junit, logback, lombok, maven, readme, shade, testcontainers, yaml]
