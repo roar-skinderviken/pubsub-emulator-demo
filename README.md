@@ -88,11 +88,38 @@ DemoListenerWithAck received ID: 8 Message: Hello 8
 DemoListenerWithAck received ID: 9 Message: Hello 9
 DemoListenerWithAck received ID: 10 Message: Hello 10
 ```
-That's it for Google pubsub emulator integration tests. Remaining sections of this document are intended for team members in an ongoing project.
 
+### What we have so far
+- `DemoController` delegates payload processing to `ControllerService`
+- `ControllerService` may do some pre-processing and then publishes the payload using `DemoPublisher`
+- Payload is received by `DemoListenerWithAck` which delegates processing to `ReceiverService`
+- Payload is also received by `SimpleDemoListener` which does nothing but printing some info to the output 
 
+### Playing with the app with e.g. Postman
 
+1. Configure a Maven profile in IntelliJ with the following settings: 
+   - Command line: `function:run`
+   - Environment variables: `MICRONAUT_ENVIRONMENTS=dev;PUBSUB_EMULATOR_HOST=localhost:8085`
 
+2. Start pubsub emulator on localhost:
+    ```
+    gcloud beta emulators pubsub start --project=test-project --host-port=0.0.0.0:8085
+    ```
+
+3. Start your Maven profile. Topic and subscriptions will be created during startup.
+
+4. Do a POST request with body on the following format using `Content-Type = application/json`:
+    ```
+    {
+       "name": "Foo Bar"
+    }
+    ```
+
+You should now see a console output like this:
+```
+SimpleDemoListener received message-id: 15 Message: Hello Foo Bar, thank you for sending the message
+DemoListenerWithAck received message-id: 15 Message: Hello Foo Bar, thank you for sending the message
+```
 
 
 

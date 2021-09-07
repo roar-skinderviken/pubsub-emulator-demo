@@ -15,14 +15,10 @@ public class PubSubConfigProperties {
     private List<String> subscriptionNames;
 
     public int getEmulatorPort() {
-        try {
-            final var hostNameParts = getEmulatorHost().split(":");
+        final var hostNameParts = getEmulatorHost().split(":");
 
-            return hostNameParts.length < 2
-                    ? 0
-                    : parseInt(hostNameParts[1]);
-        } catch (NumberFormatException ex) {
-            return 0;
-        }
+        return hostNameParts.length < 2
+                ? 0
+                : parseInt(hostNameParts[1]);
     }
 }

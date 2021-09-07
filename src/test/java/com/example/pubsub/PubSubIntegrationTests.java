@@ -1,7 +1,7 @@
 package com.example.pubsub;
 
 import com.example.CustomEnvironment;
-import com.example.http.SampleReturnMessage;
+import com.example.controller.SampleReturnMessage;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ public class PubSubIntegrationTests {
     DemoListenerWithAck demoListenerWithAck;
 
     @Test
-    public void testSubscriber() throws InterruptedException {
+    public void publishTenMessages_expectReceiveCountOfTen() throws InterruptedException {
         final int NUMBER_OF_MESSAGES_IN_TEST = 10;
 
         // make sure count is zero before test

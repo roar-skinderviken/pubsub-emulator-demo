@@ -21,13 +21,18 @@ public class TopicAndSubscriptionGenerator {
     private final PubSubConfigProperties pubSubConfigProperties;
 
     public void createTopicAndSubscriptions() {
-        createTopic();
-        pubSubConfigProperties.getSubscriptionNames().forEach(this::createSubscription);
+        final var topic =
+                TopicName.of(gcpConfigProperties.getProjectId(), pubSubConfigProperties.getTopicName());
+
+        createTopic(topic);
+
+        pubSubConfigProperties.getSubscriptionNames()
+                .forEach(subscriptionName -> createSubscription(topic, subscriptionName));
     }
 
-    private void createSubscription(String subscriptionName) {
-        var topic = TopicName.of(gcpConfigProperties.getProjectId(), pubSubConfigProperties.getTopicName());
-        var subscription = ProjectSubscriptionName.of(gcpConfigProperties.getProjectId(), subscriptionName);
+    private void createSubscription(TopicName topic, String subscriptionName) {
+        final var subscription =
+                ProjectSubscriptionName.of(gcpConfigProperties.getProjectId(), subscriptionName);
 
         try {
             subscriptionAdminClient
@@ -38,8 +43,7 @@ public class TopicAndSubscriptionGenerator {
         }
     }
 
-    private void createTopic() {
-        var topic = TopicName.of(gcpConfigProperties.getProjectId(), pubSubConfigProperties.getTopicName());
+    private void createTopic(TopicName topic) {
         try {
             topicAdminClient.createTopic(topic);
         } catch (AlreadyExistsException e) {

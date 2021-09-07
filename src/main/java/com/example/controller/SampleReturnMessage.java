@@ -1,4 +1,4 @@
-package com.example.http;
+package com.example.controller;
 
 import io.micronaut.core.annotation.Introspected;
 import lombok.AllArgsConstructor;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Introspected
-public class SampleInputMessage {
-    private String name;
+public class SampleReturnMessage {
+    private String returnMessage;
 }
