@@ -16,9 +16,11 @@ public class PubSubConfigProperties {
 
     public int getEmulatorPort() {
         try {
-            return this.getEmulatorHost().split(":").length < 2
+            final var hostNameParts = getEmulatorHost().split(":");
+
+            return hostNameParts.length < 2
                     ? 0
-                    : parseInt(this.getEmulatorHost().split(":")[1]);
+                    : parseInt(hostNameParts[1]);
         } catch (NumberFormatException ex) {
             return 0;
         }

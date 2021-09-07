@@ -3,7 +3,6 @@ package com.example.pubsub;
 import com.example.CustomEnvironment;
 import com.example.configuration.GcpConfigProperties;
 import com.example.configuration.PubSubConfigProperties;
-import com.example.pubsub.TopicAndSubscriptionGenerator;
 import io.micronaut.context.annotation.Context;
 import io.micronaut.context.annotation.Requires;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +31,7 @@ public class PubSubTestContext {
     @PostConstruct
     void createResources() {
 
-        int pubsubPort = pubSubConfigProperties.getEmulatorPort();
+        var pubsubPort = pubSubConfigProperties.getEmulatorPort();
 
         pubsubContainer =
                 new FixedHostPortGenericContainer("google/cloud-sdk:latest")

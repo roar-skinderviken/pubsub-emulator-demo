@@ -17,5 +17,4 @@ class ApplicationIntegrationTests {
     void testItWorks() {
         Assertions.assertTrue(application.isRunning());
     }
-
 }
