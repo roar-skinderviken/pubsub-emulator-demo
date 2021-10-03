@@ -1,6 +1,6 @@
 package com.example.pubsub;
 
-import com.example.configuration.PubSubConfigProperties;
+import com.example.CustomEnvironment;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.grpc.GrpcTransportChannel;
@@ -10,31 +10,45 @@ import com.google.cloud.pubsub.v1.SubscriptionAdminClient;
 import com.google.cloud.pubsub.v1.SubscriptionAdminSettings;
 import com.google.cloud.pubsub.v1.TopicAdminClient;
 import com.google.cloud.pubsub.v1.TopicAdminSettings;
+import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.micronaut.context.annotation.Factory;
+import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.annotation.Value;
+import io.micronaut.context.env.Environment;
 import jakarta.inject.Singleton;
-import lombok.RequiredArgsConstructor;
 
-import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("unused")
 @Factory
-@RequiredArgsConstructor
-public class PubSubBeanFactory {
+@Requires(env = {CustomEnvironment.CONFIG, Environment.DEVELOPMENT})
+final class PubSubBeanFactory {
 
-    private final PubSubConfigProperties pubSubConfigProperties;
+    private final CredentialsProvider credentialsProvider;
+    private final TransportChannelProvider transportChannelProvider;
+    private final ManagedChannel channel;
 
-    private CredentialsProvider credentialsProvider;
-    private TransportChannelProvider transportChannelProvider;
+    PubSubBeanFactory(
+            @Value("${pubsub.emulator.host}") final String emulatorHost) {
 
-    @PostConstruct
-    void postConstruct() {
         credentialsProvider = NoCredentialsProvider.create();
 
-        var channel = ManagedChannelBuilder
-                .forTarget(pubSubConfigProperties.getEmulatorHost()).usePlaintext().build();
+        channel = ManagedChannelBuilder
+                .forTarget(emulatorHost)
+                .usePlaintext()
+                .build();
 
-        transportChannelProvider = FixedTransportChannelProvider.create(GrpcTransportChannel.create(channel));
+        transportChannelProvider = FixedTransportChannelProvider
+                .create(GrpcTransportChannel.create(channel));
+    }
+
+    @PreDestroy
+    void preDestroy() throws InterruptedException {
+        channel.shutdownNow();
+        channel.awaitTermination(1, TimeUnit.SECONDS);
     }
 
     @Singleton
@@ -46,8 +60,11 @@ public class PubSubBeanFactory {
     }
 
     @Singleton
-    public SubscriptionAdminClient createSubscriptionAdminClient() throws IOException {
-        return SubscriptionAdminClient.create(SubscriptionAdminSettings.newBuilder()
+    public SubscriptionAdminClient createSubscriptionAdminClient()
+            throws IOException {
+
+        return SubscriptionAdminClient.create(SubscriptionAdminSettings
+                .newBuilder()
                 .setTransportChannelProvider(transportChannelProvider)
                 .setCredentialsProvider(credentialsProvider)
                 .build());

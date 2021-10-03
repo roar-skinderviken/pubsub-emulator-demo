@@ -5,10 +5,10 @@ micronaut:
 gcp:
   project-id: test-project
 
-pub-sub:
-  emulator-host: ${PUBSUB_EMULATOR_HOST}
+pubsub:
+  emulator:
+    host: ${PUBSUB_EMULATOR_HOST:default}
   topic-name: topic-test
   subscription-names:
     - subscription-one
-    - subscription-two
 

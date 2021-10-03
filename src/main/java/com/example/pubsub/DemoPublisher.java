@@ -5,10 +5,9 @@ import io.micronaut.gcp.pubsub.annotation.PubSubClient;
 import io.micronaut.gcp.pubsub.annotation.Topic;
 
 @SuppressWarnings("unused")
-
 @PubSubClient
 public interface DemoPublisher {
 
-    @Topic("${pub-sub.topic-name}")
+    @Topic("${pubsub.topic-name}")
     void send(SampleReturnMessage data);
 }
