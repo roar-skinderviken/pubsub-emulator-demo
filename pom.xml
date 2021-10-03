@@ -32,37 +32,12 @@
     <dependencies>
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-validation</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.cloud.functions</groupId>
-            <artifactId>functions-framework-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut.gcp</groupId>
-            <artifactId>micronaut-gcp-function-http</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut.gcp</groupId>
-            <artifactId>micronaut-gcp-function-http-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-http-netty</artifactId>
+            <artifactId>micronaut-http-server-netty</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-http-client</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-runtime</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -219,5 +194,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
