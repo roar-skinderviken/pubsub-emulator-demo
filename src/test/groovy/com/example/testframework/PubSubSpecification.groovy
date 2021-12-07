@@ -29,6 +29,7 @@ abstract class PubSubSpecification extends Specification
         httpClient.toBlocking()
     }
 
+    @SuppressWarnings('unused')
     def setupSpec() {
 
         // start the pubsub emulator

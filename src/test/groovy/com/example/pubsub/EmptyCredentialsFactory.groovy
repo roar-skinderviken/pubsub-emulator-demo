@@ -11,6 +11,7 @@ import jakarta.inject.Singleton
 @Requires(property = 'spec.name', value = "GoogleSpec")
 class EmptyCredentialsFactory {
 
+    @SuppressWarnings('unused')
     @Singleton
     @Replaces(GoogleCredentials)
     GoogleCredentials mockCredentials() {
