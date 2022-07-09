@@ -5,6 +5,7 @@ import com.example.testframework.PubSubSpecification
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpStatus
 import spock.lang.Shared
+import spock.util.concurrent.PollingConditions
 
 class DemoControllerSpec extends PubSubSpecification {
 
@@ -21,6 +22,8 @@ class DemoControllerSpec extends PubSubSpecification {
 
     def "when post with valid view model, data is sent to pubsub"() {
         given:
+        def conditions = new PollingConditions(timeout: 2, initialDelay: 0.5, factor: 1.0)
+        and:
         def documentVm = new SampleInputMessage("Foo Bar")
 
         when:
@@ -36,7 +39,8 @@ class DemoControllerSpec extends PubSubSpecification {
                 .getReturnMessage()
                 .startsWith("Hello Foo Bar")
         and:
-        Thread.sleep(100)
-        listener.getReceiveCount() == initialReceiveCount + 1
+        conditions.eventually {
+            listener.getReceiveCount() == initialReceiveCount + 1
+        }
     }
 }

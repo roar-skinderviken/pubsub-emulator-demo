@@ -27,7 +27,7 @@ public class DemoListenerWithAck {
     public void onMessageReceived(
             final SampleReturnMessage message,
             @MessageId final String messageId,
-            final Acknowledgement acknowledgement)  {
+            final Acknowledgement acknowledgement) {
 
         receiveCount.incrementAndGet();
 

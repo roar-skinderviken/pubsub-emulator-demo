@@ -3,6 +3,7 @@ package com.example.pubsub
 import com.example.controller.SampleReturnMessage
 import com.example.testframework.PubSubSpecification
 import spock.lang.Shared
+import spock.util.concurrent.PollingConditions
 
 import java.util.stream.IntStream
 
@@ -19,8 +20,15 @@ class PubSubIntegrationSpec extends PubSubSpecification {
 
     def "when a number of messages is sent, same amount of messages are received"() {
         given:
+        def conditions = new PollingConditions(
+                timeout: NUMBER_OF_MESSAGES_IN_TEST * DELAY_IN_MILLISECONDS_PER_MSG,
+                initialDelay: 0.5,
+                factor: 1.0)
+        and:
         demoPublisher = applicationContext.getBean(DemoPublisher)
+        and:
         listener = applicationContext.getBean(DemoListenerWithAck)
+        and:
         def initialReceiveCount = listener.getReceiveCount()
 
         when:
@@ -28,10 +36,9 @@ class PubSubIntegrationSpec extends PubSubSpecification {
                 .forEach(it -> demoPublisher.send(
                         new SampleReturnMessage("Hello World " + it)))
 
-        // wait a bit in order to let all messages propagate through the queue
-        Thread.sleep(NUMBER_OF_MESSAGES_IN_TEST * DELAY_IN_MILLISECONDS_PER_MSG)
-
         then:
-        NUMBER_OF_MESSAGES_IN_TEST == listener.getReceiveCount() - initialReceiveCount
+        conditions.eventually {
+            NUMBER_OF_MESSAGES_IN_TEST == listener.getReceiveCount() - initialReceiveCount
+        }
     }
 }

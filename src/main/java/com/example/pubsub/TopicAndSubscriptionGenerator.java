@@ -5,8 +5,8 @@ import com.example.configuration.PubSubConfigProperties;
 import com.google.api.gax.rpc.AlreadyExistsException;
 import com.google.cloud.pubsub.v1.SubscriptionAdminClient;
 import com.google.cloud.pubsub.v1.TopicAdminClient;
-import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.google.pubsub.v1.PushConfig;
+import com.google.pubsub.v1.SubscriptionName;
 import com.google.pubsub.v1.TopicName;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
@@ -32,11 +32,14 @@ public class TopicAndSubscriptionGenerator {
 
     private void createSubscription(TopicName topic, String subscriptionName) {
         final var subscription =
-                ProjectSubscriptionName.of(gcpConfigProperties.getProjectId(), subscriptionName);
+                SubscriptionName.of(gcpConfigProperties.getProjectId(), subscriptionName);
 
         try {
-            subscriptionAdminClient
-                    .createSubscription(subscription, topic, PushConfig.getDefaultInstance(), 100);
+            subscriptionAdminClient.createSubscription(
+                    subscription,
+                    topic,
+                    PushConfig.getDefaultInstance(),
+                    100);
         } catch (AlreadyExistsException e) {
             // this is fine, already created
             subscriptionAdminClient.getSubscription(subscription);
