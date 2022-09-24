@@ -1,5 +1,5 @@
 # pubsub-emulator-demo
-A Micronaut 3.5.2 Java app demonstrating pubsub emulator with testcontainers. 
+A Micronaut 3.7.0 Java app demonstrating pubsub emulator with testcontainers. 
 
 #### Running PubSubIntegrationTests
 Run
