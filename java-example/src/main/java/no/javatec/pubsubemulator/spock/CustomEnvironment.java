@@ -1,4 +1,4 @@
-package no.javatec.pubsubemulator.kotest.spock;
+package no.javatec.pubsubemulator.spock;
 
 import lombok.experimental.UtilityClass;
 

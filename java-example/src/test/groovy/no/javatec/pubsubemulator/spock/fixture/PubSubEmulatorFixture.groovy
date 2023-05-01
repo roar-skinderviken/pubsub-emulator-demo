@@ -1,6 +1,6 @@
-package no.javatec.pubsubemulator.kotest.spock.testframework
+package no.javatec.pubsubemulator.spock.fixture
 
-import no.javatec.pubsubemulator.kotest.spock.pubsub.testinfra.PubSubEmulator
+import no.javatec.pubsubemulator.spock.pubsub.testinfra.PubSubEmulator
 
 trait PubSubEmulatorFixture {
     Map<String, Object> getPubSubConfiguration() {

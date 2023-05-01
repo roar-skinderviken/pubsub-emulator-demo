@@ -1,4 +1,4 @@
-package no.javatec.pubsubemulator.kotest.spock.pubsub;
+package no.javatec.pubsubemulator.spock.pubsub;
 
 import io.micronaut.gcp.pubsub.annotation.MessageId;
 import io.micronaut.gcp.pubsub.annotation.PubSubListener;
@@ -6,7 +6,7 @@ import io.micronaut.gcp.pubsub.annotation.Subscription;
 import io.micronaut.messaging.Acknowledgement;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import no.javatec.pubsubemulator.kotest.spock.dto.SampleReturnMessage;
+import no.javatec.pubsubemulator.spock.dto.SampleReturnMessage;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

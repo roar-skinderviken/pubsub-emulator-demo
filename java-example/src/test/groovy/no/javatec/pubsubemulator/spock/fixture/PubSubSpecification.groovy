@@ -1,12 +1,12 @@
-package no.javatec.pubsubemulator.kotest.spock.testframework
+package no.javatec.pubsubemulator.spock.fixture
 
 
 import io.micronaut.context.ApplicationContext
 import io.micronaut.http.client.BlockingHttpClient
 import io.micronaut.http.client.HttpClient
 import io.micronaut.runtime.server.EmbeddedServer
-import no.javatec.pubsubemulator.kotest.spock.CustomEnvironment
-import no.javatec.pubsubemulator.kotest.spock.pubsub.testinfra.TopicAndSubscriptionGenerator
+import no.javatec.pubsubemulator.spock.CustomEnvironment
+import no.javatec.pubsubemulator.spock.pubsub.testinfra.TopicAndSubscriptionGenerator
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification

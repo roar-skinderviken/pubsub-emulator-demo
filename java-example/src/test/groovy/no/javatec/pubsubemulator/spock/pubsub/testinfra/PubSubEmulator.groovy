@@ -1,4 +1,4 @@
-package no.javatec.pubsubemulator.kotest.spock.pubsub.testinfra
+package no.javatec.pubsubemulator.spock.pubsub.testinfra
 
 import com.google.api.gax.grpc.GrpcTransportChannel
 import com.google.api.gax.rpc.FixedTransportChannelProvider

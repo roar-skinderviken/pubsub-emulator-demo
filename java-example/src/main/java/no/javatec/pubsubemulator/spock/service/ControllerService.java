@@ -1,8 +1,8 @@
-package no.javatec.pubsubemulator.kotest.spock.service;
+package no.javatec.pubsubemulator.spock.service;
 
-import no.javatec.pubsubemulator.kotest.spock.dto.SampleInputMessage;
-import no.javatec.pubsubemulator.kotest.spock.dto.SampleReturnMessage;
-import no.javatec.pubsubemulator.kotest.spock.pubsub.DemoPublisher;
+import no.javatec.pubsubemulator.spock.dto.SampleInputMessage;
+import no.javatec.pubsubemulator.spock.dto.SampleReturnMessage;
+import no.javatec.pubsubemulator.spock.pubsub.DemoPublisher;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 

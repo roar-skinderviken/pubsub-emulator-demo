@@ -1,6 +1,6 @@
-package no.javatec.pubsubemulator.kotest.spock.pubsub;
+package no.javatec.pubsubemulator.spock.pubsub;
 
-import no.javatec.pubsubemulator.kotest.spock.dto.SampleReturnMessage;
+import no.javatec.pubsubemulator.spock.dto.SampleReturnMessage;
 import io.micronaut.gcp.pubsub.annotation.PubSubClient;
 import io.micronaut.gcp.pubsub.annotation.Topic;
 

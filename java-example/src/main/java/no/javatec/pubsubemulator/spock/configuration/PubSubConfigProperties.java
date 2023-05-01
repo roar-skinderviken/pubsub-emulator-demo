@@ -1,4 +1,4 @@
-package no.javatec.pubsubemulator.kotest.spock.configuration;
+package no.javatec.pubsubemulator.spock.configuration;
 
 import io.micronaut.context.annotation.ConfigurationProperties;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package no.javatec.pubsubemulator.kotest.spock.pubsub.testinfra;
+package no.javatec.pubsubemulator.spock.pubsub.testinfra;
 
-import no.javatec.pubsubemulator.kotest.spock.configuration.GcpConfigProperties;
-import no.javatec.pubsubemulator.kotest.spock.configuration.PubSubConfigProperties;
+import no.javatec.pubsubemulator.spock.configuration.GcpConfigProperties;
+import no.javatec.pubsubemulator.spock.configuration.PubSubConfigProperties;
 import com.google.api.gax.rpc.AlreadyExistsException;
 import com.google.cloud.pubsub.v1.SubscriptionAdminClient;
 import com.google.cloud.pubsub.v1.TopicAdminClient;

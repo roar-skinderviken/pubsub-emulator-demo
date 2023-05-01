@@ -1,4 +1,4 @@
-package no.javatec.pubsubemulator.kotest.spock.pubsub.testinfra;
+package no.javatec.pubsubemulator.spock.pubsub.testinfra;
 
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.NoCredentialsProvider;
@@ -15,7 +15,7 @@ import jakarta.inject.Singleton;
 
 import java.io.IOException;
 
-import static no.javatec.pubsubemulator.kotest.spock.CustomEnvironment.PUBSUB_CONFIG;
+import static no.javatec.pubsubemulator.spock.CustomEnvironment.PUBSUB_CONFIG;
 import static io.micronaut.context.env.Environment.DEVELOPMENT;
 
 @Factory

@@ -1,4 +1,4 @@
-package no.javatec.pubsubemulator.kotest.spock.testframework
+package no.javatec.pubsubemulator.spock.fixture
 
 import io.micronaut.context.env.Environment
 

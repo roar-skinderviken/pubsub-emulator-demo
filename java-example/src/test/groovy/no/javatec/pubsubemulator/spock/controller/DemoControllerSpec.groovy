@@ -1,12 +1,12 @@
-package no.javatec.pubsubemulator.kotest.spock.controller
+package no.javatec.pubsubemulator.spock.controller
 
 
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpStatus
-import no.javatec.pubsubemulator.kotest.spock.dto.SampleInputMessage
-import no.javatec.pubsubemulator.kotest.spock.dto.SampleReturnMessage
-import no.javatec.pubsubemulator.kotest.spock.pubsub.DemoListenerWithAck
-import no.javatec.pubsubemulator.kotest.spock.testframework.PubSubSpecification
+import no.javatec.pubsubemulator.spock.dto.SampleInputMessage
+import no.javatec.pubsubemulator.spock.dto.SampleReturnMessage
+import no.javatec.pubsubemulator.spock.pubsub.DemoListenerWithAck
+import no.javatec.pubsubemulator.spock.fixture.PubSubSpecification
 import spock.lang.Shared
 import spock.util.concurrent.PollingConditions
 

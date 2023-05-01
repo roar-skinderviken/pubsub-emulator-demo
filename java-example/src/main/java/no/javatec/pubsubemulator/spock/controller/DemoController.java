@@ -1,11 +1,11 @@
-package no.javatec.pubsubemulator.kotest.spock.controller;
+package no.javatec.pubsubemulator.spock.controller;
 
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import lombok.RequiredArgsConstructor;
-import no.javatec.pubsubemulator.kotest.spock.dto.SampleInputMessage;
-import no.javatec.pubsubemulator.kotest.spock.dto.SampleReturnMessage;
-import no.javatec.pubsubemulator.kotest.spock.service.ControllerService;
+import no.javatec.pubsubemulator.spock.dto.SampleInputMessage;
+import no.javatec.pubsubemulator.spock.dto.SampleReturnMessage;
+import no.javatec.pubsubemulator.spock.service.ControllerService;
 
 @Controller("/pubsubEmulatorDemo")
 @RequiredArgsConstructor

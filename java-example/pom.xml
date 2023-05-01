@@ -12,7 +12,7 @@
     <artifactId>java-example</artifactId>
 
     <properties>
-        <exec.mainClass>no.javatec.pubsubemulator.kotest.spock.Application</exec.mainClass>
+        <exec.mainClass>no.javatec.pubsubemulator.spock.Application</exec.mainClass>
     </properties>
 
     <dependencies>
