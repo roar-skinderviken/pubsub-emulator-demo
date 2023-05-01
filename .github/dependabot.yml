@@ -6,3 +6,10 @@ updates:
       interval: monthly
       time: "16:20"
       timezone: Europe/Oslo
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      time: "16:20"
+      timezone: Europe/Oslo
