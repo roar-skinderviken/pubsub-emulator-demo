@@ -1,0 +1,11 @@
+micronaut:
+  application:
+    name: pubsubEmulatorDemo
+
+gcp:
+  project-id: test-project
+
+pubsub:
+  topic: test-topic
+  subscription: test-subscription
+
