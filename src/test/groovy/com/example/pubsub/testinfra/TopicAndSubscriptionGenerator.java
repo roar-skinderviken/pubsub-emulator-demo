@@ -1,4 +1,4 @@
-package com.example.pubsub;
+package com.example.pubsub.testinfra;
 
 import com.example.configuration.GcpConfigProperties;
 import com.example.configuration.PubSubConfigProperties;

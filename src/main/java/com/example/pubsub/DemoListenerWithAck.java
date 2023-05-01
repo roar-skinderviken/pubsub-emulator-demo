@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings("unused")
-
 @Slf4j
 @PubSubListener
 @RequiredArgsConstructor

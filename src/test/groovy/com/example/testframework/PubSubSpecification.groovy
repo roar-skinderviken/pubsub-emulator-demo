@@ -1,7 +1,7 @@
 package com.example.testframework
 
 import com.example.CustomEnvironment
-import com.example.pubsub.TopicAndSubscriptionGenerator
+import com.example.pubsub.testinfra.TopicAndSubscriptionGenerator
 import io.micronaut.context.ApplicationContext
 import io.micronaut.http.client.BlockingHttpClient
 import io.micronaut.http.client.HttpClient

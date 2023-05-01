@@ -10,14 +10,14 @@
     <parent>
         <groupId>io.micronaut</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>3.7.0</version>
+        <version>3.9.1</version>
     </parent>
 
     <properties>
         <packaging>jar</packaging>
         <jdk.version>17</jdk.version>
         <release.version>17</release.version>
-        <micronaut.version>3.7.0</micronaut.version>
+        <micronaut.version>3.9.1</micronaut.version>
         <exec.mainClass>com.example.Application</exec.mainClass>
         <micronaut.runtime>google_function</micronaut.runtime>
     </properties>
