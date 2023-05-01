@@ -1,14 +1,17 @@
 package no.javatec.pubsubemulator.kotest.pubsub
 
+import io.micronaut.context.annotation.Requires
 import io.micronaut.gcp.pubsub.annotation.MessageId
 import io.micronaut.gcp.pubsub.annotation.PubSubListener
 import io.micronaut.gcp.pubsub.annotation.Subscription
 import io.micronaut.messaging.Acknowledgement
+import no.javatec.pubsubemulator.kotest.CustomEnvironment.PUBSUB_CONFIG
 import no.javatec.pubsubemulator.kotest.dto.SampleReturnMessage
 import no.javatec.pubsubemulator.kotest.loggerFor
 import java.util.concurrent.atomic.AtomicInteger
 
 @PubSubListener
+@Requires(notEnv = [PUBSUB_CONFIG])
 class DemoListenerWithAck {
 
     private val log = loggerFor<DemoListenerWithAck>()

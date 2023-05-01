@@ -1,5 +1,6 @@
 package no.javatec.pubsubemulator.spock.pubsub;
 
+import io.micronaut.context.annotation.Requires;
 import io.micronaut.gcp.pubsub.annotation.MessageId;
 import io.micronaut.gcp.pubsub.annotation.PubSubListener;
 import io.micronaut.gcp.pubsub.annotation.Subscription;
@@ -10,10 +11,13 @@ import no.javatec.pubsubemulator.spock.dto.SampleReturnMessage;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static no.javatec.pubsubemulator.spock.CustomEnvironment.PUBSUB_CONFIG;
+
 @SuppressWarnings("unused")
 @Slf4j
 @PubSubListener
 @RequiredArgsConstructor
+@Requires(notEnv = {PUBSUB_CONFIG})
 public class DemoListenerWithAck {
 
     private final AtomicInteger receiveCount = new AtomicInteger();

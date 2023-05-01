@@ -6,10 +6,13 @@ import com.google.cloud.pubsub.v1.TopicAdminClient
 import com.google.pubsub.v1.PushConfig
 import com.google.pubsub.v1.SubscriptionName
 import com.google.pubsub.v1.TopicName
+import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
 import jakarta.inject.Singleton
+import no.javatec.pubsubemulator.kotest.CustomEnvironment.PUBSUB_CONFIG
 
 @Singleton
+@Requires(env = [PUBSUB_CONFIG])
 class TopicAndSubscriptionGenerator(
     private val topicAdminClient: TopicAdminClient,
     private val subscriptionAdminClient: SubscriptionAdminClient,

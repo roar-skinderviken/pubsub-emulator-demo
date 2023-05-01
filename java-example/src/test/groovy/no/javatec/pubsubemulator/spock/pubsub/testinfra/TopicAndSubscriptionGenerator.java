@@ -1,5 +1,6 @@
 package no.javatec.pubsubemulator.spock.pubsub.testinfra;
 
+import io.micronaut.context.annotation.Requires;
 import no.javatec.pubsubemulator.spock.configuration.GcpConfigProperties;
 import no.javatec.pubsubemulator.spock.configuration.PubSubConfigProperties;
 import com.google.api.gax.rpc.AlreadyExistsException;
@@ -11,8 +12,11 @@ import com.google.pubsub.v1.TopicName;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
+import static no.javatec.pubsubemulator.spock.CustomEnvironment.PUBSUB_CONFIG;
+
 @Singleton
 @RequiredArgsConstructor
+@Requires(env = {PUBSUB_CONFIG})
 public class TopicAndSubscriptionGenerator {
 
     private final TopicAdminClient topicAdminClient;

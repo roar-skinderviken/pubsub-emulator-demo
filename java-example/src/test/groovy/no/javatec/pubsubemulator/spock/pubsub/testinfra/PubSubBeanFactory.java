@@ -16,10 +16,9 @@ import jakarta.inject.Singleton;
 import java.io.IOException;
 
 import static no.javatec.pubsubemulator.spock.CustomEnvironment.PUBSUB_CONFIG;
-import static io.micronaut.context.env.Environment.DEVELOPMENT;
 
 @Factory
-@Requires(env = {PUBSUB_CONFIG, DEVELOPMENT})
+@Requires(env = {PUBSUB_CONFIG})
 final class PubSubBeanFactory {
 
     private final CredentialsProvider credentialsProvider;

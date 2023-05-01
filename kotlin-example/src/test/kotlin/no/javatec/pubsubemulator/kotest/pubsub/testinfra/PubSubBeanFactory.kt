@@ -8,11 +8,14 @@ import com.google.cloud.pubsub.v1.TopicAdminClient
 import com.google.cloud.pubsub.v1.TopicAdminSettings
 import io.micronaut.context.annotation.Factory
 import io.micronaut.context.annotation.Replaces
+import io.micronaut.context.annotation.Requires
 import jakarta.inject.Named
 import jakarta.inject.Singleton
+import no.javatec.pubsubemulator.kotest.CustomEnvironment.PUBSUB_CONFIG
 import java.io.IOException
 
 @Factory
+@Requires(env = [PUBSUB_CONFIG])
 class PubSubBeanFactory {
 
     private val credentialsProvider = NoCredentialsProvider.create()
