@@ -2,18 +2,14 @@ package no.javatec.pubsubemulator.spock.pubsub.testinfra;
 
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.NoCredentialsProvider;
-import com.google.api.gax.grpc.GrpcTransportChannel;
-import com.google.api.gax.rpc.FixedTransportChannelProvider;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.cloud.pubsub.v1.SubscriptionAdminClient;
 import com.google.cloud.pubsub.v1.SubscriptionAdminSettings;
 import com.google.cloud.pubsub.v1.TopicAdminClient;
 import com.google.cloud.pubsub.v1.TopicAdminSettings;
-import io.grpc.ManagedChannelBuilder;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.context.annotation.Replaces;
 import io.micronaut.context.annotation.Requires;
-import io.micronaut.context.annotation.Value;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 
@@ -30,20 +26,11 @@ final class PubSubBeanFactory {
         this.credentialsProvider = NoCredentialsProvider.create();
     }
 
-    @Requires(env = {PUBSUB_CONFIG})
     @Singleton
     @Named("pubsub")
     @Replaces(TransportChannelProvider.class)
-    public TransportChannelProvider localChannelProvider(
-            @Value("${pubsub.emulator.host}") String emulatorEndpoint
-    ) {
-        return FixedTransportChannelProvider.create(
-                GrpcTransportChannel.create(
-                        ManagedChannelBuilder.forTarget(emulatorEndpoint)
-                                .usePlaintext()
-                                .build()
-                )
-        );
+    public TransportChannelProvider localChannelProvider() {
+        return PubSubEmulator.getTransportChannelProvider();
     }
 
     @Requires(env = {PUBSUB_CONFIG})
