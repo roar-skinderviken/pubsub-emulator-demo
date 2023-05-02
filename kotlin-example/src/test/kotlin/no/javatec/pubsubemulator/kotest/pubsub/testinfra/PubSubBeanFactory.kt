@@ -40,7 +40,7 @@ class PubSubBeanFactory {
     @Singleton
     @Throws(IOException::class)
     fun createTopicAdminClient(
-        transportChannelProvider: TransportChannelProvider?
+        transportChannelProvider: TransportChannelProvider
     ): TopicAdminClient? {
         return TopicAdminClient.create(
             TopicAdminSettings
@@ -55,7 +55,7 @@ class PubSubBeanFactory {
     @Singleton
     @Throws(IOException::class)
     fun createSubscriptionAdminClient(
-        transportChannelProvider: TransportChannelProvider?
+        transportChannelProvider: TransportChannelProvider
     ): SubscriptionAdminClient? {
         return SubscriptionAdminClient.create(
             SubscriptionAdminSettings
