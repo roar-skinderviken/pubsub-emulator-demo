@@ -25,16 +25,13 @@ public class TopicAndSubscriptionGenerator {
     private final PubSubConfigProperties pubSubConfigProperties;
 
     public void createTopicAndSubscriptions() {
-        final var topic =
-                TopicName.of(gcpConfigProperties.getProjectId(), pubSubConfigProperties.getTopic());
-
+        final var topic = TopicName.of(gcpConfigProperties.getProjectId(), pubSubConfigProperties.getTopic());
         createTopic(topic);
         createSubscription(topic, pubSubConfigProperties.getSubscription());
     }
 
     private void createSubscription(TopicName topic, String subscriptionName) {
-        final var subscription =
-                SubscriptionName.of(gcpConfigProperties.getProjectId(), subscriptionName);
+        final var subscription = SubscriptionName.of(gcpConfigProperties.getProjectId(), subscriptionName);
 
         try {
             subscriptionAdminClient.createSubscription(
