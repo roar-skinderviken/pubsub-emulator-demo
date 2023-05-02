@@ -41,28 +41,24 @@ class PubSubBeanFactory {
     @Throws(IOException::class)
     fun createTopicAdminClient(
         transportChannelProvider: TransportChannelProvider
-    ): TopicAdminClient? {
-        return TopicAdminClient.create(
-            TopicAdminSettings
-                .newBuilder()
-                .setTransportChannelProvider(transportChannelProvider)
-                .setCredentialsProvider(credentialsProvider)
-                .build()
-        )
-    }
+    ): TopicAdminClient = TopicAdminClient.create(
+        TopicAdminSettings
+            .newBuilder()
+            .setTransportChannelProvider(transportChannelProvider)
+            .setCredentialsProvider(credentialsProvider)
+            .build()
+    )
 
     @Requires(env = [PUBSUB_CONFIG])
     @Singleton
     @Throws(IOException::class)
     fun createSubscriptionAdminClient(
         transportChannelProvider: TransportChannelProvider
-    ): SubscriptionAdminClient? {
-        return SubscriptionAdminClient.create(
-            SubscriptionAdminSettings
-                .newBuilder()
-                .setTransportChannelProvider(transportChannelProvider)
-                .setCredentialsProvider(credentialsProvider)
-                .build()
-        )
-    }
+    ): SubscriptionAdminClient = SubscriptionAdminClient.create(
+        SubscriptionAdminSettings
+            .newBuilder()
+            .setTransportChannelProvider(transportChannelProvider)
+            .setCredentialsProvider(credentialsProvider)
+            .build()
+    )
 }
