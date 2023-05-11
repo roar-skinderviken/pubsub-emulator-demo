@@ -13,7 +13,7 @@
 
     <properties>
         <kotlinVersion>1.8.10</kotlinVersion>
-        <kotestVersion>5.6.1</kotestVersion>
+        <kotestVersion>5.6.2</kotestVersion>
         <exec.mainClass>com.example.ApplicationKt</exec.mainClass>
     </properties>
 
