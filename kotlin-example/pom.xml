@@ -12,7 +12,7 @@
     <artifactId>kotlin-example</artifactId>
 
     <properties>
-        <kotlinVersion>1.8.10</kotlinVersion>
+        <kotlinVersion>1.8.22</kotlinVersion>
         <kotestVersion>5.6.2</kotestVersion>
         <exec.mainClass>com.example.ApplicationKt</exec.mainClass>
     </properties>
