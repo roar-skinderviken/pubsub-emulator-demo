@@ -5,20 +5,20 @@ import io.micronaut.gcp.pubsub.annotation.MessageId;
 import io.micronaut.gcp.pubsub.annotation.PubSubListener;
 import io.micronaut.gcp.pubsub.annotation.Subscription;
 import io.micronaut.messaging.Acknowledgement;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import no.javatec.pubsubemulator.spock.dto.SampleReturnMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static no.javatec.pubsubemulator.spock.CustomEnvironment.PUBSUB_CONFIG;
 
-@SuppressWarnings("unused")
-@Slf4j
+
 @PubSubListener
-@RequiredArgsConstructor
 @Requires(notEnv = {PUBSUB_CONFIG})
 public class DemoListenerWithAck {
+
+    private static final Logger log = LoggerFactory.getLogger(DemoListenerWithAck.class);
 
     private final AtomicInteger receiveCount = new AtomicInteger();
 
@@ -26,6 +26,7 @@ public class DemoListenerWithAck {
         return receiveCount.get();
     }
 
+    @SuppressWarnings("unused")
     @Subscription("${pubsub.subscription}")
     public void onMessageReceived(
             final SampleReturnMessage message,
@@ -38,7 +39,7 @@ public class DemoListenerWithAck {
                 " received message-id: " +
                 messageId +
                 " Message: " +
-                message.getReturnMessage());
+                message.returnMessage());
 
         acknowledgement.ack();
     }

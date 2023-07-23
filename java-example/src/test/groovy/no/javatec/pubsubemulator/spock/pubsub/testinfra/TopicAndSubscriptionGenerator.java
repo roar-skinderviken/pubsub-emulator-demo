@@ -10,12 +10,10 @@ import com.google.pubsub.v1.PushConfig;
 import com.google.pubsub.v1.SubscriptionName;
 import com.google.pubsub.v1.TopicName;
 import jakarta.inject.Singleton;
-import lombok.RequiredArgsConstructor;
 
 import static no.javatec.pubsubemulator.spock.CustomEnvironment.PUBSUB_CONFIG;
 
 @Singleton
-@RequiredArgsConstructor
 @Requires(env = {PUBSUB_CONFIG})
 public class TopicAndSubscriptionGenerator {
 
@@ -24,14 +22,26 @@ public class TopicAndSubscriptionGenerator {
     private final GcpConfigProperties gcpConfigProperties;
     private final PubSubConfigProperties pubSubConfigProperties;
 
+    public TopicAndSubscriptionGenerator(
+            TopicAdminClient topicAdminClient,
+            SubscriptionAdminClient subscriptionAdminClient,
+            GcpConfigProperties gcpConfigProperties,
+            PubSubConfigProperties pubSubConfigProperties) {
+
+        this.topicAdminClient = topicAdminClient;
+        this.subscriptionAdminClient = subscriptionAdminClient;
+        this.gcpConfigProperties = gcpConfigProperties;
+        this.pubSubConfigProperties = pubSubConfigProperties;
+    }
+
     public void createTopicAndSubscriptions() {
-        final var topic = TopicName.of(gcpConfigProperties.getProjectId(), pubSubConfigProperties.getTopic());
+        final var topic = TopicName.of(gcpConfigProperties.projectId(), pubSubConfigProperties.topic());
         createTopic(topic);
-        createSubscription(topic, pubSubConfigProperties.getSubscription());
+        createSubscription(topic, pubSubConfigProperties.subscription());
     }
 
     private void createSubscription(TopicName topic, String subscriptionName) {
-        final var subscription = SubscriptionName.of(gcpConfigProperties.getProjectId(), subscriptionName);
+        final var subscription = SubscriptionName.of(gcpConfigProperties.projectId(), subscriptionName);
 
         try {
             subscriptionAdminClient.createSubscription(

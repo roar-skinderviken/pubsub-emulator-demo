@@ -38,7 +38,7 @@ class DemoControllerSpec extends PubSubSpecification {
         and:
         response.getBody(SampleReturnMessage)
                 .get()
-                .getReturnMessage()
+                .returnMessage()
                 .startsWith("Hello Foo Bar")
         and:
         conditions.eventually {

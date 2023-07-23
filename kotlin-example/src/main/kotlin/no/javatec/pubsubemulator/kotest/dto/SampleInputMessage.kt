@@ -1,8 +1,8 @@
 package no.javatec.pubsubemulator.kotest.dto
 
-import io.micronaut.core.annotation.Introspected
+import io.micronaut.serde.annotation.Serdeable
 
-@Introspected
+@Serdeable
 data class SampleInputMessage(
     val name: String
 )

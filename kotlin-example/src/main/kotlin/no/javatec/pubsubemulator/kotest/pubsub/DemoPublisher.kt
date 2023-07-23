@@ -5,8 +5,8 @@ import io.micronaut.gcp.pubsub.annotation.Topic
 import no.javatec.pubsubemulator.kotest.dto.SampleReturnMessage
 
 @PubSubClient
-interface DemoPublisher {
+fun interface DemoPublisher {
 
     @Topic("\${pubsub.topic}")
-    fun send(data: SampleReturnMessage?)
+    fun send(data: SampleReturnMessage)
 }

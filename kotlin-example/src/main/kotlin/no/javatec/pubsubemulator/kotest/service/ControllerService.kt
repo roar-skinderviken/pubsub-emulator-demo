@@ -8,11 +8,8 @@ import no.javatec.pubsubemulator.kotest.pubsub.DemoPublisher
 @Singleton
 class ControllerService(private val demoPublisher: DemoPublisher) {
 
-    fun processRequest(inputMessage: SampleInputMessage): SampleReturnMessage {
-        val returnMessage =
-            SampleReturnMessage("Hello ${inputMessage.name}, thank you for sending the message")
-
-        demoPublisher.send(returnMessage)
-        return returnMessage
-    }
+    fun processRequest(inputMessage: SampleInputMessage): SampleReturnMessage =
+        SampleReturnMessage("Hello ${inputMessage.name}, thank you for sending the message").also {
+            demoPublisher.send(it)
+        }
 }
