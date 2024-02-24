@@ -4,5 +4,5 @@ import io.micronaut.serde.annotation.Serdeable
 
 @Serdeable
 data class SampleReturnMessage(
-    val returnMessage: String
+    val message: String
 )
