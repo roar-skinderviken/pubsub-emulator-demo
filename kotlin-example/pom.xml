@@ -12,7 +12,7 @@
     <artifactId>kotlin-example</artifactId>
 
     <properties>
-        <kotlinVersion>1.9.22</kotlinVersion>
+        <kotlinVersion>1.9.23</kotlinVersion>
         <exec.mainClass>no.javatec.pubsubemulator.kotest.ApplicationKt</exec.mainClass>
     </properties>
 
