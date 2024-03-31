@@ -3,7 +3,7 @@ package no.javatec.pubsubemulator.kotest.pubsub.testinfra
 import com.google.api.gax.rpc.AlreadyExistsException
 import com.google.cloud.pubsub.v1.SubscriptionAdminClient
 import com.google.cloud.pubsub.v1.TopicAdminClient
-import com.google.pubsub.v1.PushConfig
+import com.google.pubsub.v1.Subscription
 import com.google.pubsub.v1.SubscriptionName
 import com.google.pubsub.v1.TopicName
 import io.micronaut.context.annotation.Requires
@@ -32,11 +32,12 @@ class TopicAndSubscriptionGenerator(
     ) {
         val subscription = SubscriptionName.of(projectId, subscriptionName)
         try {
-            subscriptionAdminClient.createSubscription(
-                subscription,
-                topic,
-                PushConfig.getDefaultInstance(),
-                100
+            subscriptionAdminClient.createSubscription(Subscription.newBuilder()
+                .setName(subscription.toString())
+                .setTopic(topic.toString())
+                .setEnableMessageOrdering(true)
+                .setAckDeadlineSeconds(100)
+                .build()
             )
         } catch (e: AlreadyExistsException) {
             // this is fine, already created
