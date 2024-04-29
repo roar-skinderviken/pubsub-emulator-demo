@@ -11,6 +11,8 @@
         <module>java-example</module>
     </modules>
 
+    <!-- dummy change -->
+
     <parent>
         <groupId>io.micronaut.platform</groupId>
         <artifactId>micronaut-parent</artifactId>
