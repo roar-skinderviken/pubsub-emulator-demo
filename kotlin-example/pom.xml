@@ -71,7 +71,7 @@
                                 <path>
                                     <groupId>io.micronaut.serde</groupId>
                                     <artifactId>micronaut-serde-processor</artifactId>
-                                    <version>2.8.1</version>
+                                    <version>${micronaut.serialization.version}</version>
                                 </path>
                             </annotationProcessorPaths>
                             <annotationProcessorArgs>
