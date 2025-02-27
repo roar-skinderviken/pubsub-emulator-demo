@@ -35,10 +35,9 @@ public class DemoListenerWithAck {
 
         receiveCount.incrementAndGet();
 
-        log.info(getClass().getSimpleName() +
-                " received message-id: " +
-                messageId +
-                " Message: " +
+        log.info("{} received message-id: {} Message: {}",
+                getClass().getSimpleName(),
+                messageId,
                 message.returnMessage());
 
         acknowledgement.ack();

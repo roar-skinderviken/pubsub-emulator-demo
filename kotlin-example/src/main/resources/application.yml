@@ -8,4 +8,3 @@ gcp:
 pubsub:
   topic: test-topic
   subscription: test-subscription
-
