@@ -3,13 +3,16 @@ import io.micronaut.gradle.MicronautExtension
 group = "no.javatec.pubsubemulator"
 version = "0.0.1-SNAPSHOT"
 
+repositories { mavenCentral() }
+
 plugins {
-    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.micronaut.application) apply false
     alias(libs.plugins.devtools.ksp) apply false
 }
 
 val micronautVersion = libs.versions.micronaut.platform.version
+val testcontainersGcloudLib = libs.testcontainers.gcloud
 
 subprojects {
     repositories { mavenCentral() }
@@ -27,6 +30,16 @@ subprojects {
         processing {
             incremental(true)
         }
+    }
+
+    dependencies {
+        runtimeOnly("org.yaml:snakeyaml")
+        implementation("io.micronaut.serde:micronaut-serde-jackson")
+        implementation("io.micronaut:micronaut-http-server-netty")
+        implementation("io.micronaut.gcp:micronaut-gcp-pubsub")
+
+        testImplementation("io.micronaut:micronaut-http-client")
+        testImplementation(testcontainersGcloudLib)
     }
 }
 
