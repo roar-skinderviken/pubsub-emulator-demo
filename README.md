@@ -4,7 +4,7 @@ A Micronaut 4.x app demonstrating pubsub emulator with testcontainers. Examples 
 #### Running PubSubIntegrationTests
 Run
 ```shell
-./mvnw clean test
+./gradlew clean check
 ``` 
 
 You should see something like this in the console:
