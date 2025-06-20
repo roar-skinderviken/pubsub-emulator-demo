@@ -20,11 +20,8 @@ dependencies {
 }
 
 micronaut {
-    version = libs.versions.micronaut.platform.version
-    runtime("netty")
     testRuntime("kotest5")
     processing {
-        incremental(true)
         annotations("no.javatec.pubsubemulator.kotest.*")
     }
 }

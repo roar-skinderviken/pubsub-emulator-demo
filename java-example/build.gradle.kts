@@ -24,11 +24,8 @@ dependencies {
 }
 
 micronaut {
-    version = libs.versions.micronaut.platform.version
-    runtime("netty")
     testRuntime("spock2")
     processing {
-        incremental(true)
         annotations("no.javatec.pubsubemulator.spock.*")
     }
 }
