@@ -10,7 +10,7 @@ import no.javatec.pubsubemulator.kotest.pubsub.testinfra.TopicAndSubscriptionGen
 
 
 @Suppress("unused")
-object ProjectConfig : AbstractProjectConfig() {
+object KotestConfig : AbstractProjectConfig() {
     override fun extensions(): List<Extension> = listOf(MicronautKotest5Extension)
 
     override suspend fun beforeProject() {

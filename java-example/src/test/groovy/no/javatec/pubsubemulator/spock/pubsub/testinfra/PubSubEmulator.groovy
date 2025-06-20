@@ -23,7 +23,7 @@ class PubSubEmulator {
     static init() {
         if (pubSubEmulatorContainer == null) {
             pubSubEmulatorContainer = new PubSubEmulatorContainer(
-                    DockerImageName.parse("gcr.io/google.com/cloudsdktool/cloud-sdk:emulators"))
+                    DockerImageName.parse("gcr.io/google.com/cloudsdktool/cloud-sdk:emulators:427.0.0"))
 
             pubSubEmulatorContainer.start()
 
