@@ -1,0 +1,23 @@
+[versions]
+kotlin-version = "2.1.10"
+kotest-version = "5.9.1"
+mockk-version = "1.14.2"
+
+devtools-ksp-version = "2.1.10-1.0.30"
+micronaut-platform-version = "4.8.3"
+micronaut-application-version = "4.5.4"
+testcontainers-gcloud-version = "1.21.2"
+
+[libraries]
+micronaut-platform = { module = "io.micronaut.platform:micronaut-parent", version.ref = "micronaut-platform-version" }
+
+# test
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest-version" }
+mockk = { module = "io.mockk:mockk-jvm", version.ref = "mockk-version" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest-version" }
+testcontainers-gcloud = { module = "org.testcontainers:gcloud", version.ref = "testcontainers-gcloud-version" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
+micronaut-application = { id = "io.micronaut.application", version.ref = "micronaut-application-version" }
+devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "devtools-ksp-version" }
