@@ -24,5 +24,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Run tests with Gradle
-        run: ./gradlew clean check --build-cache --info
+      - name: Run tests with Gradle, java-example
+        run: ./gradlew check -p java-example --build-cache --info
+
+      - name: Run tests with Gradle, kotlin-example
+        run: ./gradlew check -p kotlin-example --build-cache --info
