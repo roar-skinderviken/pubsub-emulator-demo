@@ -13,8 +13,7 @@ class PubSubIntegrationTest(
     randomLatencyTestListener: RandomLatencyTestListener
 ) : BehaviorSpec({
 
-    // test excluded for now, does not pass with GitHub Actions
-    xGiven("applicationContext") {
+    Given("applicationContext") {
 
         When("sending a pubsub message") {
             /** verify that receive count is 0 before test */
