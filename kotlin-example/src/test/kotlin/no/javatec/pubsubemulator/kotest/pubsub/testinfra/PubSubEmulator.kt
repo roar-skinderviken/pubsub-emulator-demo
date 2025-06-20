@@ -25,7 +25,7 @@ object PubSubEmulator {
         if (PubSubEmulator::instance.isInitialized) return
 
         instance = PubSubEmulatorContainer(
-            DockerImageName.parse("gcr.io/google.com/cloudsdktool/cloud-sdk:emulators")
+            DockerImageName.parse("gcr.io/google.com/cloudsdktool/cloud-sdk:emulators:427.0.0")
         )
 
         instance.start()
