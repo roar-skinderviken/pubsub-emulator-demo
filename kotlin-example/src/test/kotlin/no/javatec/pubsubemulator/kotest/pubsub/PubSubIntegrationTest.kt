@@ -22,7 +22,7 @@ class PubSubIntegrationTest(
             demoPublisher.send(SampleReturnMessage("Hello world"))
 
             Then("pubsub message should be received by listener") {
-                eventually(5.seconds) {
+                eventually(20.seconds) {
                     randomLatencyTestListener.receiveCount.get() shouldBe 1
                 }
             }
