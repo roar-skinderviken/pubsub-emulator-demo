@@ -6,7 +6,7 @@ mockk-version = "1.14.2"
 devtools-ksp-version = "2.1.10-1.0.30"
 micronaut-platform-version = "4.8.3"
 micronaut-application-version = "4.5.4"
-testcontainers-gcloud-version = "1.21.2"
+testcontainers-gcloud-version = "1.21.3"
 
 [libraries]
 micronaut-platform = { module = "io.micronaut.platform:micronaut-parent", version.ref = "micronaut-platform-version" }
