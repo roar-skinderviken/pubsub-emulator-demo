@@ -13,13 +13,17 @@ import no.javatec.pubsubemulator.kotest.pubsub.testinfra.TopicAndSubscriptionGen
 object KotestConfig : AbstractProjectConfig() {
     override fun extensions(): List<Extension> = listOf(MicronautKotest5Extension)
 
+    private val log = loggerFor<KotestConfig>()
+
     override suspend fun beforeProject() {
         PubSubEmulator.start()
         setupPubSubTopicsAndSubscriptions()
+        log.info("PubSubEmulator started and configured")
     }
 
     override suspend fun afterProject() {
         PubSubEmulator.stop()
+        log.info("PubSubEmulator stopped")
     }
 
     private fun setupPubSubTopicsAndSubscriptions() {
