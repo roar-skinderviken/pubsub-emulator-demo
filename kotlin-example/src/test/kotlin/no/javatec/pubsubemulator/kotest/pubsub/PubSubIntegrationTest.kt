@@ -13,25 +13,24 @@ class PubSubIntegrationTest(
     randomLatencyTestListener: RandomLatencyTestListener
 ) : BehaviorSpec({
 
-    // test excluded for now, does not pass with GitHub Actions
     Given("applicationContext") {
-        var initialMessageCount = 0
+        When("sending pubsub messages") {
+            val initialMessageCount = randomLatencyTestListener.receiveCount.get()
 
-        beforeContainer {
-            initialMessageCount = randomLatencyTestListener.receiveCount.get()
-        }
+            (1..NUMBER_OF_MESSAGES_IN_TEST).forEach {
+                demoPublisher.send(SampleReturnMessage("Hello world $it"))
+            }
 
-        When("sending a pubsub message") {
-            /** verify that receive count is 0 before test */
-            randomLatencyTestListener.receiveCount.get() shouldBe 0
-
-            demoPublisher.send(SampleReturnMessage("Hello world"))
-
-            Then("pubsub message should be received by listener") {
-                eventually(5.seconds) {
-                    randomLatencyTestListener.receiveCount.get() - initialMessageCount shouldBe 1
+            Then("pubsub messages should be received by listener") {
+                eventually(10.seconds) {
+                    val receivedMessageCount = randomLatencyTestListener.receiveCount.get() - initialMessageCount
+                    receivedMessageCount shouldBe NUMBER_OF_MESSAGES_IN_TEST
                 }
             }
         }
     }
-})
+}) {
+    companion object {
+        private const val NUMBER_OF_MESSAGES_IN_TEST = 5
+    }
+}
