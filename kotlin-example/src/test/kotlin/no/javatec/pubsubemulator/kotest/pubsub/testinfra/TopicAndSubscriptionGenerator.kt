@@ -16,9 +16,9 @@ import no.javatec.pubsubemulator.kotest.CustomEnvironment.PUBSUB_CONFIG
 class TopicAndSubscriptionGenerator(
     private val topicAdminClient: TopicAdminClient,
     private val subscriptionAdminClient: SubscriptionAdminClient,
-    @Value("\${gcp.project-id}") private val projectId: String,
-    @Value("\${pubsub.topic}") private val topicName: String,
-    @Value("\${pubsub.subscription}") private val subscriptionName: String
+    @param:Value(value = $$"${gcp.project-id}") private val projectId: String,
+    @param:Value(value = $$"${pubsub.topic}") private val topicName: String,
+    @param:Value(value = $$"${pubsub.subscription}") private val subscriptionName: String
 ) {
     fun createTopicAndSubscriptions() {
         val topic = TopicName.of(projectId, topicName)
@@ -39,7 +39,7 @@ class TopicAndSubscriptionGenerator(
                 .setAckDeadlineSeconds(100)
                 .build()
             )
-        } catch (e: AlreadyExistsException) {
+        } catch (_: AlreadyExistsException) {
             // this is fine, already created
             subscriptionAdminClient.getSubscription(subscription)
         }
@@ -48,7 +48,7 @@ class TopicAndSubscriptionGenerator(
     private fun createTopic(topic: TopicName) {
         try {
             topicAdminClient.createTopic(topic)
-        } catch (e: AlreadyExistsException) {
+        } catch (_: AlreadyExistsException) {
             // this is fine, already created
             topicAdminClient.getTopic(topic)
         }

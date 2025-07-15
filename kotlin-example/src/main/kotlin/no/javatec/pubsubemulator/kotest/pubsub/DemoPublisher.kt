@@ -7,6 +7,6 @@ import no.javatec.pubsubemulator.kotest.dto.SampleReturnMessage
 @PubSubClient
 fun interface DemoPublisher {
 
-    @Topic("\${pubsub.topic}")
+    @Topic($$"${pubsub.topic}")
     fun send(message: SampleReturnMessage)
 }
