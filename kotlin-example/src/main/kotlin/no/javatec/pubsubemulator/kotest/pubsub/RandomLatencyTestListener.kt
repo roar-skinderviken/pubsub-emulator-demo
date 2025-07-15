@@ -17,7 +17,7 @@ class RandomLatencyTestListener {
     val receiveCount = AtomicInteger()
 
     @Suppress("unused")
-    @Subscription("\${pubsub.subscription}")
+    @Subscription($$"${pubsub.subscription}")
     fun onMessageReceived(message: SampleReturnMessage) {
 
         println("$message start")
