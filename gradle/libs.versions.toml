@@ -5,7 +5,7 @@ mockk-version = "1.14.6"
 
 devtools-ksp-version = "2.2.20-2.0.3"
 micronaut-platform-version = "4.9.2"
-micronaut-application-version = "4.5.5"
+micronaut-application-version = "4.6.1"
 testcontainers-gcloud-version = "1.21.3"
 
 [libraries]
