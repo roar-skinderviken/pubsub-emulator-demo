@@ -4,7 +4,7 @@ kotest-version = "6.0.7"
 mockk-version = "1.14.6"
 
 devtools-ksp-version = "2.3.4"
-micronaut-platform-version = "4.9.2"
+micronaut-platform-version = "4.10.7"
 micronaut-application-version = "4.6.1"
 testcontainers-gcloud-version = "1.21.4"
 
