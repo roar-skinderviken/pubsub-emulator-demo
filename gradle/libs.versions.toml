@@ -2,7 +2,7 @@
 kotlin-version = "2.3.0"
 kotest-version = "6.1.4"
 mockk-version = "1.14.9"
-devtools-ksp-version = "2.3.5"
+devtools-ksp-version = "2.3.6"
 micronaut-platform-version = "4.10.7"
 micronaut-application-version = "4.6.1"
 testcontainers-gcloud-version = "1.21.4"
