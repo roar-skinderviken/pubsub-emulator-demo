@@ -1,5 +1,5 @@
 [versions]
-kotlin-version = "2.3.0"
+kotlin-version = "2.3.20"
 kotest-version = "6.1.4"
 mockk-version = "1.14.9"
 devtools-ksp-version = "2.3.6"
