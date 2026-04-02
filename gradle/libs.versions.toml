@@ -1,6 +1,6 @@
 [versions]
 kotlin-version = "2.3.0"
-kotest-version = "6.1.2"
+kotest-version = "6.1.4"
 mockk-version = "1.14.9"
 devtools-ksp-version = "2.3.5"
 micronaut-platform-version = "4.10.7"
